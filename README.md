@@ -375,7 +375,7 @@ class ContentModelArticle extends JModelLegacy
 
 ### 變數命名原則
 
-在 SMS Taiwan 的專案中，變數優先採用 "studly caps" 風格 (也稱作 "bumpy case" 或 "camel caps")。名稱起始的字母必須是小寫，而每個新單字的首個字母為大寫。
+在 LYRASOFT 的專案中，變數優先採用 "studly caps" 風格 (也稱作 "bumpy case" 或 "camel caps")。名稱起始的字母必須是小寫，而每個新單字的首個字母為大寫。
 
 ### 賦值
 
@@ -653,7 +653,7 @@ C 風格的註解通常被用在文件開頭、類別、函式等等的文件標
 
 ### 文件表頭
 
-採用 SMS PHPStorm File-Template 內的預設格式：
+採用 LYRASOFT PHPStorm File-Template 內的預設格式：
 
 ``` php
 <?php
