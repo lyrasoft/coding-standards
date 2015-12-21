@@ -4,9 +4,9 @@
 
 ## 程式縮排
 
-SMS 以 4 格空格作為 JS 檔案的主要縮排間距，請勿在 `.js` 在檔案中使用 Tab 做排版。
+LYRASOFT 以 4 格空格作為 JS 檔案的主要縮排間距，請勿在 `.js` 在檔案中使用 Tab 做排版。
 
-可允許 inline JS 使用 Tab，因 SMS 的 PHP 規範以 Tab 為縮排，當 JS 不得已必須寫在 PHP 檔案內時則不在此限，
+可允許 inline JS 使用 Tab，因 LYRASOFT 的 PHP 規範以 Tab 為縮排，當 JS 不得已必須寫在 PHP 檔案內時則不在此限，
 不過縮排以外的程式碼對齊排版請依舊使用空格，避免混用的情形發生。
 
 ## 變數
@@ -339,7 +339,7 @@ switch (foo)
 - 程式區塊內只包含一個操作時
 
 ``` javascript
-smsRocks ? 'This is true' : 'else it is false';
+lyraRocks ? 'This is true' : 'else it is false';
 ```
 
 否則就使用標準語法
