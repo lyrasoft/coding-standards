@@ -2,13 +2,19 @@
 
 ## 前言
 
-編碼標準是軟體工程中的重要組成部分，用以規範工程師的寫作、排版與命名，並保持一致性，使程式碼可讀性提高，讓軟體易於維護。
+好用的功能造就優秀的軟體，高水準的程式碼品質造就偉大的軟體。要讓我們的產品從優質進步到偉大，我們必須專注在外人看不到的苦工上，讓軟體更健壯、好維護。
 
-本標準文件為 LYRASOFT 工程師參考用編碼標準，基於 Joomla! & Windwalker 編碼標準，簡化部分非 Open source 所需之繁雜規定，並以範例形式展示。
+編碼標準是軟體工程中的重要組成部分，用以規範工程師的寫作、排版與命名，並保持一致性，使程式碼可讀性提高，讓軟體易於維護。本標準文件為 LYRASOFT 工程師參考用編碼標準，基於 Joomla! & Windwalker 編碼標準，簡化部分非 Open source 所需之繁雜規定，並以範例形式展示。
 
-### Joomla! 編碼標準
+## 關於 PSR 標準
 
-請參照 [Joomla-Coding-Stanard-Chinese](https://github.com/asika32764/Joomla-Coding-Stanard-Chinese)
+在 PSR 盛行的今日，我們暫時未轉進 PSR-2 標準。由於我們的軟體工程知識有其歷史，遠從 PHP 尚未全面標準化的年代，我們就致力於與國際 Opensource 接軌，遵循我們所熟悉的生態圈的標準，並建立屬於自己的開發規範與流程。LYRASOFT 的編碼風格承襲自 PEAR 與 Joomla，經過長年的檢驗與調整，是非常優秀且易讀性高的標準。也因此 LYRASOFT 將繼續維持這個標準，並隨時根據 PHP 社群的習慣過作微幅調整。
+
+本標準中若有未盡完善的規則，依然可以優先參考 PSR-1 與 PSR-2 取而代之，臨時需要採用他方標準時，可善用 PHPStorm 的 Code Style 功能作調整。
+
+### 原始 Joomla! 編碼標準
+
+請參照 [Joomla-Coding-Stanard-Chinese](https://github.com/asika32764/Joomla-Coding-Stanard-Chinese) （本文件少部分已過期，詳情請以[官方文件](http://joomla.github.io/coding-standards/)為主）
 
 ## 其他編碼標準
 
