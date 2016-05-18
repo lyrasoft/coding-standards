@@ -173,7 +173,7 @@ var myObj = new Object;
 一律使用 `use strict` 模式，strict 宣告的後方空一行。
 
 ``` javascript
-(function ($) 
+(function ($)
 {
     "use strict";
 
@@ -182,7 +182,7 @@ var myObj = new Object;
         foo: function()
         {},
 
-        bar: function() 
+        bar: function()
         {}
     };
 
@@ -194,16 +194,16 @@ var myObj = new Object;
 可重複創建實體的物件，我們改用 Prototype 模式來宣告
 
 ``` javascript
-(function ($) 
+(function ($)
 {
     "use strict";
 
-    var MyClass = function(params) 
+    var MyClass = function(params)
     {
         // Code...
     }
 
-    MyClass.prototype.flower = function () 
+    MyClass.prototype.flower = function ()
     {
         // Code...
     };
@@ -227,7 +227,7 @@ var newObject = new MyClass(params);
 範例：
 
 ``` javascript
-if (foo == 'bar' && baz < 5) 
+if (foo == 'bar' && baz < 5)
 {
     // Code...
 }
@@ -237,7 +237,7 @@ if (foo == 'bar' && baz < 5)
 
 ``` javscript
 if (a == b && c == d && e == f
-    && g == h && j == k) 
+    && g == h && j == k)
 {
     // Code...
 }
@@ -246,15 +246,15 @@ if (a == b && c == d && e == f
 若有多層控制結構，每一層的關鍵字與上一層結束括號和下一層開頭括號皆需獨立換行：
 
 ``` javascript
-if (a == b) 
+if (a == b)
 {
     // Code...
-} 
-else if (c == d) 
+}
+else if (c == d)
 {
     // Code...
-} 
-else 
+}
+else
 {
     // Code...
 }
@@ -270,12 +270,12 @@ if (a == b) alert(1);
 ### for 範例
 
 ``` javascript
-for (i = 0; i < 5; i++) 
+for (i = 0; i < 5; i++)
 {
     // Code...
 }
 
-for (i in foo) 
+for (i in foo)
 {
     // Code...
 }
@@ -284,11 +284,11 @@ for (i in foo)
 ### Try catch 範例
 
 ``` javasript
-try 
+try
 {
     // Code...
-} 
-catch (err) 
+}
+catch (err)
 {
     console.log(err);
 }
@@ -297,13 +297,13 @@ catch (err)
 ### While 範例
 
 ``` javascript
-while (flower) 
+while (flower)
 {
     // Code...
 }
 
 // Do While
-do 
+do
 {
     // Code...
 } while (flower)
@@ -316,7 +316,7 @@ Case 與判斷內容間空一格，判斷式與後方冒號之間不空格。
 Case 內容程式碼與 break 皆內縮一排。
 
 ``` javascript
-switch (foo) 
+switch (foo)
 {
     case 'bar':
         // Code...
@@ -345,11 +345,11 @@ lyraRocks ? 'This is true' : 'else it is false';
 否則就使用標準語法
 
 ``` javascript
-if (condition) 
+if (condition)
 {
 	// statements
-} 
-else 
+}
+else
 {
 	// statements
 }
@@ -370,13 +370,13 @@ else
 
 ``` javascript
 // 一般宣告
-function foo(bar, baz) 
+function foo(bar, baz)
 {
     // Code...
 }
 
 // 變數宣告
-var flower = function(sakura, olive) 
+var flower = function(sakura, olive)
 {
     // Code...
 };
@@ -386,7 +386,7 @@ var flower = function(sakura, olive)
 
 ``` javascript
 var flower = function(sakura, olive, sunflower,
-    rose, orange) 
+    rose, orange)
 {
     // Code...
 };

@@ -19,6 +19,7 @@
 ## 其他編碼標準
 
 - [Javascript 標準](javascript.md)
+- [CSS 標準](css.md)
 - [SQL 建議寫法](sql.md)
 
 ## 檔案格式
@@ -106,7 +107,7 @@ require_once('foo.php');
 
 一般來說，我們應該盡量用絕對路徑，搭配 Joomla! 常數來引入檔案，避免位置變更時出錯：
 
-``` php 
+``` php
 require_once JPATH_LIBRARIES . '/foo/bar.php';
 ```
 
@@ -277,9 +278,9 @@ if ($avoid)
 	$table  = $this->getTable();
 
 	$table->bind($data);
-	
+
 	$table->check();
-	
+
 	$table->store();
 }
 ```
@@ -363,7 +364,7 @@ Joomla! CMS 中，類別屬性以底線分隔單字，如： `$this->default_vie
 class ContentModelArticle extends JModelLegacy
 {
 	public $foo;
-	
+
 	public function getFoo()
 	{
 		return $this->foo;
@@ -388,7 +389,7 @@ public function getItems($pk = null)
 	$db    = JFactory::getDbo();
 	$app   = JFactory::getApplication();
 	$query = $db->getQuery(true);
-	
+
 	// 函式主體
 }
 ```
@@ -404,7 +405,7 @@ foreach ($array as $k => $value)
 	{
 		break;
 	}
-	
+
 	// Do some stuff....
 }
 ```
@@ -420,7 +421,7 @@ foreach ($array as $k => $value)
 	{
 		break;
 	}
-	
+
 	// Do some stuff....
 }
 ```
@@ -431,9 +432,9 @@ foreach ($array as $k => $value)
 class ImageThumb
 {
 	protected $width;
-	
+
 	protected $height;
-	
+
 	public function __construct(JRegistry $config)
 	{
 		$this->width  = $config->get('thumb.width', 640);
@@ -740,7 +741,7 @@ class Foo
 	 * Description of Bar.
 	 *
 	 * @var    string
-	 * 
+	 *
 	 * @since  1.0
 	 */
 	public protected $bar;
@@ -756,7 +757,7 @@ class Foo
 {
 	/**
 	 * Description of Constant.
-	 * 
+	 *
 	 * @const  string
 	 */
 	const SAKURA = 'sakura';
