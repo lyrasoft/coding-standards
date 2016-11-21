@@ -29,7 +29,9 @@ var foo    = 'foo',
 
 請讓變數命名語意化，易於理解。
 
-`var element = document.getElementById('elementId');`
+``` javascript
+var element = document.getElementById('elementId');
+```
 
 迴圈中的索引則不在此限，允許使用 `i`, `j`, `k` 作為索引變數。
 
@@ -61,7 +63,7 @@ var foo    = 'foo',
 - 有需要隔斷單字的空白，需要放在每一行字串的尾部，而非下一行字串的開頭。
 - 串接運算子應放在每個字串片段的結尾，此時串接符後方不需空格。
 
-```
+``` javascript
 var longString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
     'Sed placerat, tellus eget egestas tincidunt, lectus dui ' +
     'sagittis massa, id mollis est tortor a enim. In hac ' +
@@ -76,13 +78,13 @@ var longString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
 
 **錯誤:**
 
-```
+``` javascript
 var count = +document.getElementById('inputId').value;
 ```
 
 **正確:**
 
-```
+``` javascript
 var count = parseInt(document.getElementById('inputId').value);
 ```
 
@@ -173,8 +175,7 @@ var myObj = new Object;
 一律使用 `use strict` 模式，strict 宣告的後方空一行。
 
 ``` javascript
-(function ($)
-{
+(function ($) {
     "use strict";
 
     window.MyObject = window.MyObject || {
@@ -194,8 +195,7 @@ var myObj = new Object;
 可重複創建實體的物件，我們改用 Prototype 模式來宣告
 
 ``` javascript
-(function ($)
-{
+(function ($) {
     "use strict";
 
     var MyClass = function(params)
@@ -222,40 +222,35 @@ var newObject = new MyClass(params);
 控制結構中，條件式的中括號與關鍵字之間必須間隔一個空格，每個判斷條件之間的邏輯運算子（如 `&&`）前後需要空一格。最先與最後一個判斷條件跟括號之間不需要空格。
 而判斷式內如果用到比較運算子（如 `<`, `==`），則運算子前後也需要空格。
 
-控制結構所包裹的區塊空間，其開頭大括號與結束括號皆需自己在新的一行。
+控制結構所包裹的區塊空間，其開頭大括號不換行，結束括號需自己在新的一行。
 
 範例：
 
 ``` javascript
-if (foo == 'bar' && baz < 5)
-{
+if (foo == 'bar' && baz < 5) {
     // Code...
 }
 ```
 
 過長的條件式可以換行，換行後內縮一次，邏輯運算子請放在換行後的開頭
 
-``` javscript
+``` javascript
 if (a == b && c == d && e == f
-    && g == h && j == k)
-{
+    && g == h && j == k) {
     // Code...
 }
 ```
 
-若有多層控制結構，每一層的關鍵字與上一層結束括號和下一層開頭括號皆需獨立換行：
+若有多層控制結構，每一層的關鍵字與上一層結束括號需換行，每一層開頭括號不需獨立換行：
 
 ``` javascript
-if (a == b)
-{
+if (a == b) {
     // Code...
 }
-else if (c == d)
-{
+else if (c == d) {
     // Code...
-}
-else
-{
+} 
+else {
     // Code...
 }
 ```
@@ -270,13 +265,11 @@ if (a == b) alert(1);
 ### for 範例
 
 ``` javascript
-for (i = 0; i < 5; i++)
-{
+for (i = 0; i < 5; i++) {
     // Code...
 }
 
-for (i in foo)
-{
+for (i in foo) {
     // Code...
 }
 ```
@@ -284,12 +277,10 @@ for (i in foo)
 ### Try catch 範例
 
 ``` javasript
-try
-{
+try {
     // Code...
 }
-catch (err)
-{
+catch (err) {
     console.log(err);
 }
 ```
@@ -297,14 +288,12 @@ catch (err)
 ### While 範例
 
 ``` javascript
-while (flower)
-{
+while (flower) {
     // Code...
 }
 
 // Do While
-do
-{
+do {
     // Code...
 } while (flower)
 ```
@@ -316,8 +305,7 @@ Case 與判斷內容間空一格，判斷式與後方冒號之間不空格。
 Case 內容程式碼與 break 皆內縮一排。
 
 ``` javascript
-switch (foo)
-{
+switch (foo) {
     case 'bar':
         // Code...
         break;
@@ -345,12 +333,10 @@ lyraRocks ? 'This is true' : 'else it is false';
 否則就使用標準語法
 
 ``` javascript
-if (condition)
-{
+if (condition) {
 	// statements
 }
-else
-{
+else {
 	// statements
 }
 ```
@@ -370,14 +356,12 @@ else
 
 ``` javascript
 // 一般宣告
-function foo(bar, baz)
-{
+function foo(bar, baz) {
     // Code...
 }
 
 // 變數宣告
-var flower = function(sakura, olive)
-{
+var flower = function(sakura, olive) {
     // Code...
 };
 ```
@@ -386,8 +370,7 @@ var flower = function(sakura, olive)
 
 ``` javascript
 var flower = function(sakura, olive, sunflower,
-    rose, orange)
-{
+    rose, orange) {
     // Code...
 };
 ```
