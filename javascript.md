@@ -198,13 +198,11 @@ var myObj = new Object;
 (function ($) {
     "use strict";
 
-    var MyClass = function(params)
-    {
+    var MyClass = function(params) {
         // Code...
     }
 
-    MyClass.prototype.flower = function ()
-    {
+    MyClass.prototype.flower = function () {
         // Code...
     };
 
@@ -241,16 +239,14 @@ if (a == b && c == d && e == f
 }
 ```
 
-若有多層控制結構，每一層的關鍵字與上一層結束括號需換行，每一層開頭括號不需獨立換行：
+若有多層控制結構，每一層的關鍵字與上一層結束括號不需換行，每一層開頭括號也不需換行：
 
 ``` javascript
 if (a == b) {
     // Code...
-}
-else if (c == d) {
+} else if (c == d) {
     // Code...
-} 
-else {
+} else {
     // Code...
 }
 ```
@@ -279,8 +275,7 @@ for (i in foo) {
 ``` javasript
 try {
     // Code...
-}
-catch (err) {
+} catch (err) {
     console.log(err);
 }
 ```
@@ -335,8 +330,7 @@ lyraRocks ? 'This is true' : 'else it is false';
 ``` javascript
 if (condition) {
 	// statements
-}
-else {
+} else {
 	// statements
 }
 ```
@@ -348,7 +342,7 @@ else {
 函式宣告時，函式名稱或 `function` 關鍵字與參數區塊開頭括號之間不空格。參數區塊內與開頭結尾參數之間無空格。多個參數時，參數之間用逗號隔開，
 逗號前方不空格，後方空一格。
 
-包裹函式邏輯區塊的大括號，開頭結尾皆需獨立換行。
+包裹函式邏輯區塊的大括號，開頭結尾皆不需獨立換行。
 
 採用變數宣告時，結尾必須後綴分號，一般宣告時則不需要分號。
 
