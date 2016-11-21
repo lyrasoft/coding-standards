@@ -272,7 +272,7 @@ for (i in foo) {
 
 ### Try catch 範例
 
-``` javasript
+``` javascript
 try {
     // Code...
 } catch (err) {
