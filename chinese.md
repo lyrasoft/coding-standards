@@ -241,19 +241,23 @@ h6 {
 以下的 LESS / SCSS 程式碼可以直接 Copy 到專案中使用 (將不定期更新)
 
 ```less
+@main-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+@title-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+
 html, body {
   font-size: 16px;
-  font-family: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+  font-family: @main-font;
+  line-height: 1.75;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  font-family: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+  font-family: @title-font;
 }
 
 .article-content {
     color: #666;
-    line-height: 1.7;
+    line-height: 1.75;
     font-size: 18px;
 
     h1, h2, h3, h4, h5, h6 {
