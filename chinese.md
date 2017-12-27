@@ -1,0 +1,300 @@
+# 中文 CSS 排版原則指南
+
+由於網路上的 CSS 排版探討大多著重於主流的西方拉丁語系文字，其在文字大小、行距等各方面並不完全適用中文文字。
+故本文件提供一個易讀且清晰的常用中文網頁排版指南，供網頁設計師參考。
+
+## 注意
+
+本文件僅提供 HTML/CSS 統一化排版樣式之標準建議，並不規範 HTML 結構，中英文之間是否空格等細部規定。
+
+另外考量到我們常常是以 Bootstrap 佈景為基礎開發網站，本文件著重在如何將以有的佈景調整成合適的樣式。
+
+## 字體大小
+
+### 基礎 Body 字體大小
+
+由於近年來 Full HD 螢幕逐漸普及，以 1080p 觀看網站的使用者越來越多，網站的字體大小建議以 `html, body { font-size: 16px }` 作為基準值。
+
+> 目前網路上最普遍使用的 Bootstrap 4 代預設採用 16px，3 代則是 14px ，如果您使用的是 3 代，建議自行覆蓋 body 的字體大小。
+
+### 標題字體大小
+
+當網站套用模板時，或者設計師獨立設計網站版面時，可能對標題大小有自己的想法，因此本文件不規範全域的標題大小。但另外在文章字體中有所建議。
+
+> Bootstrap 中文標題大小是用 px 寫死的，建議設計師還是要自己把 h1 ~ h6 的大小重設一遍
+
+### 選單、Label、Badge 等字體大小
+
+通常選單與特定 UI 元素的字體會稍小。一般來說建議以 Body 字體的百分比約略縮小，當有必要調整基礎字體大小時，所有文字都會根據比例一起變動。
+
+若設計師考量到某些元素內的字體變更大小會影響到排版，也可以用像素 `px` 當作單位。
+
+## 字型
+
+字型部分，將以未載入 Webfont 作為基準，提供適用於 Windows & Mac 作業系統的安全字體建議。
+
+### 基本常用字體
+
+在 Mac 中，目前最常用的中文字體為**蘋方TC**，再來是**黑體TC**，要注意的是 Mac 上的 CSS 通常必須要把字體名稱寫成英文，所以會是 `PingFang TC` 與 `Heiti TC`。 (你想支援更古老的 Mac 別忘了 **LiHei Pro**)
+
+Windows 上不意外的萬年**微軟正黑體**，你不用特別設定新細明體，因為當所有字體都抓不到時，最後就是回到新細明體來顯示。 (Windows 上字型必須用中文名稱)
+
+故以下是我們常用的字體順序:
+
+```css
+font-family: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+```
+
+開頭的英文字型可以任意搭配，或是用 Google Webfont 皆可。
+
+若要適應大陸網站，則建議加上雅黑體:
+
+```css
+font-family: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif;
+```
+
+### 標題字體
+
+標題字體在 Mac 上可以加上例如**蘭亭黑體** `LantingHei TC` 之類的額外選擇。由於中文的標題與內文區隔較不明顯，建議在中文網頁上，通常要選比較粗的字體。若字型一樣，則嘗試加粗。
+
+在 Windows 上沒有太多選擇，依然是微軟正黑體然後加粗。不過可以考慮採用一個蠻好看的字體: **Adobe繁黑體**，在 Windows 上顯示的平滑效果不輸給 Mac，缺點是有安裝 Adobe 全套的使用者才看的到。
+
+### 按鈕與 UI 元素
+
+某些布景內的按鈕、Label 等許多 UI 元素都有另外寫字體樣式，要記得除了 `html, body` 以外也要替這些 UI 元素設定好字體以統一風格。
+
+### LESS 編寫建議
+
+若全站字體變動不大，建議在 LESS 或 SCSS 的開頭就寫好相關變數，之後網站內只要套用變數即可。
+
+```less
+@main-font: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+@title-font: '{標題的英文字型}', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+```
+
+使用方式
+
+```less
+.article-content .btn {
+    font-family: @main-font;
+}
+```
+
+## 字重
+
+原則上維持預設即可，設計師可根據設計需求調整字重。
+
+### Windows 注意事項
+
+Windows 10 以後，字重 300 以下的字體會出現渲染模糊，應確認設定成 400 以上。
+
+下圖是字重 300
+
+![](https://i.imgur.com/NZQEv12.jpg)
+
+下圖是字重 400
+
+![](https://i.imgur.com/eAexMc7.jpg)
+
+## 行距
+
+Bootstrap 預設行距較適合英文，對中文來說太窄。中文文字行距建議設為 `150%` 到 `175%`，根據設計所需要的空間感來定。 (可用 `1.5` 來表示)
+
+![](https://i.imgur.com/WtsvMvF.jpg)
+
+### Feature 介紹行距
+
+首頁或是 Landing Page 的介紹文字，則可以採用 `175%` 到 `200%` 行距，建立空間感。
+
+![](https://i.imgur.com/Pbn0O6r.jpg)
+
+### 標題行距
+
+主副標與內文之間，各自之間應該要有不同的間距，建立層次感。
+
+下圖是沒有層次感的範例，間距都一樣
+
+![](https://i.imgur.com/1QXIRbr.jpg)
+
+下圖則是建立起標題之間的層次差距
+
+![](https://i.imgur.com/jceUS8k.jpg)
+
+## 內文排版
+
+內文排版章節主要規範一般部落格文章或網站靜態文章中，含有大量文字、標題與段落的樣式，可以與網站的其他區塊排版風格分開。內文排版主要以閱讀舒適度為最高優先，
+
+### 字體大小
+
+可考慮 `16px` ~ `18px` 以上，較大的字體大小有助於長時間閱讀大量文字。
+
+標題部分，由於 Bootstrap 皆把標題大小寫死，建議另行用 `em` 做調整。並將 h2 ~ h6 調大，不然 h6 會小於一般字體大小。
+
+```less
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+```
+
+別忘了標題最好加字重，否則中文的標題到 h4 以下就跟內文分不出來了。
+
+### 間距
+
+建議 `<p>` 元素的上下 `margin` 皆設 `1em`，明確區隔段落。
+
+標題可上寬下窄，上方 `1em`，下方 `0.6em` ~ `0.8em`，可建立出層次感。設計感較重的網站，上下方可以從 `1.3em` 以上起跳。
+
+### 行距
+
+行距同樣維持 150% ~ 175% 擁有優良的閱讀感受。
+
+### 顏色
+
+若網站採用較淡的灰黑色當作主要字體顏色，內文切記要加深，建議至少要比 `#666` 來得更深，閱讀較不吃力。
+
+### 樣式
+
+在 LESS 編寫時，建議將內文專用樣式用一個 class 包起來，與網站的其他區域做區隔。我們較常用的是 `articlt-content` 這個 class。
+
+以下的範例可以直接複製到專案中使用:
+
+```less
+.article-content {
+    color: #666;
+    line-height: 1.7;
+    font-size: 18px;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1em;
+        margin-bottom: .6em;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.7rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+    
+    p {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    hr {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    pre {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}
+```
+
+## 範例程式
+
+本文的排版範例可以在這裡看到 DEMO: https://jsfiddle.net/asika32764/L3dx987L/
+
+以下的 LESS / SCSS 程式碼可以直接 Copy 到專案中使用 (將不定期更新)
+
+```less
+html, body {
+  font-size: 16px;
+  font-family: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  font-family: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+}
+
+.article-content {
+    color: #666;
+    line-height: 1.7;
+    font-size: 18px;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1em;
+        margin-bottom: .6em;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.7rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+    
+    p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    hr {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    pre {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}
+
+```

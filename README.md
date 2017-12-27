@@ -12,3 +12,4 @@
 - [Javascript 標準](javascript.md)
 - [CSS 標準](css.md)
 - [SQL 建議寫法](sql.md)
+- [中文排版原則](chinese.md)
