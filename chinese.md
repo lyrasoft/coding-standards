@@ -31,6 +31,7 @@
     - [7.4. 顏色](#74-顏色)
     - [7.5. 樣式](#75-樣式)
 - [8. 範例程式](#8-範例程式)
+- [目前在使用這個排版風格的網站](#目前在使用這個排版風格的網站)
 
 <!-- /TOC -->
 
@@ -349,3 +350,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ```
+
+## 目前在使用這個排版風格的網站
+
+- [LYRASOFT](https://lyrasoft.net/)
+- [飛鳥學院](http://asukademy.com/)
+- [夏木樂網站知識](https://simular.co/knowledge/)
+- [AnimApp 動畫社群](http://animapp.tw/)
+- [台灣美語通](https://www.english4tw.com/)
+- [Datavideo Virtualset](http://www.datavideovirtualset.com/tw)
+- [iHealth](http://www.ihealth.com.tw/)
