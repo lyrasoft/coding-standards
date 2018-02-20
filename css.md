@@ -1,6 +1,4 @@
-# LYRASOFT CSS 編碼規範 beta
-
-> 這份 CSS 規範尚在 beta 中，因此有部分規則我們尚未完全導入到專案內，但足以作為討論時的參考
+# LYRASOFT CSS 編碼規範
 
 ## 主要原則
 
@@ -11,7 +9,7 @@
 - 考維護性 Maintainable
 - 可擴充 Scalable
 
-See [CSS Architecture](http://philipwalton.com/articles/css-architecture/) by Philip Walton
+參考 [CSS Architecture](http://philipwalton.com/articles/css-architecture/) by Philip Walton
 
 ## 語法與格式
 
@@ -22,32 +20,34 @@ See [CSS Architecture](http://philipwalton.com/articles/css-architecture/) by Ph
 ```css
 /* 正確 */
 .example {
-    background: black;
-    color: #fff;
+  background: black;
+  color: #fff;
 }
 
 /* 錯誤 - 冒號後面沒有後綴空白 */
 .example {
-    background:black;
-    color:#fff;
+  background:black;
+  color:#fff;
 }
 
 /* 錯誤 - 沒有以分號作為結尾 */
 .example {
-    background: black;
-    color: #fff
+  background: black;
+  color: #fff
 }
 ```
 
 ### 縮排
 
-以4個空白(spaces)作為縮排。
+自 2018 年開始，統一 CSS, SASS, LESS 所有檔案之縮排為 2 spaces。
+
+寫在 HTML 或 PHP 內的可接受 4 spaces。
 
 ```css
 /* 正確 */
 .example {
-    color: #000;
-    visibility: hidden;
+  color: #000;
+  visibility: hidden;
 }
 
 /* 錯誤 - 寫在同一行 */
@@ -56,20 +56,20 @@ See [CSS Architecture](http://philipwalton.com/articles/css-architecture/) by Ph
 
 ### 巢狀結構
 
-LESS/SCSS 等等的 Pre-compiled CSS 允許巢狀結構，在巢狀結構中，其子選擇器還有樣式規則都應該縮排 (4 spaces)。巢狀結構以一行空行與上層結構作為間隔。
+LESS/SCSS 等等的 Pre-compiled CSS 允許巢狀結構，在巢狀結構中，其子選擇器還有樣式規則都應該縮排 (2 spaces)。巢狀結構以一行空行與上層結構作為間隔。
 
 ```css
 /* 正確 */
 .example {
 
-    > li {
-        float: none;
+  > li {
+    float: none;
 
-        + li {
-        	margin-top: 2px;
-        	margin-left: 0;
-        }
+    + li {
+    	margin-top: 2px;
+    	margin-left: 0;
     }
+  }
 }
 ```
 
@@ -82,13 +82,13 @@ LESS/SCSS 等等的 Pre-compiled CSS 允許巢狀結構，在巢狀結構中，�
 ```css
 /* 正確 */
 .example {
-    color: #fff;
+  color: #fff;
 }
 
 /* 錯誤 - 右大括號的位置錯了，沒有正確縮排 */
 .example {
-    color: #fff;
-    }
+  color: #fff;
+  }
 ```
 
 各個選擇器皆獨立在自己的一行，最後一個選擇器與左大括號位於同一行：
@@ -97,31 +97,19 @@ LESS/SCSS 等等的 Pre-compiled CSS 允許巢狀結構，在巢狀結構中，�
 .foo, 
 .foo--bar,
 .baz {
-    display: block;
+  display: block;
 }
 ```
 
-#### 樣式宣告對齊
+#### 前綴字對齊
 
-同類型或類似的樣式宣告，建議使用空白來縮排對齊 (非強制)，例如：
+跨瀏覽器引擎的的樣式宣告，建議使用空白來縮排對齊 (非強制)，例如：
 
 ```css
 .foo {
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-}
-
-.bar {
-    position: absolute;
-    top:    0;
-    right:  0;
-    bottom: 0;
-    left:   0;
-    margin-right: -10px;
-    margin-left:  -10px;
-    padding-right: 10px;
-    padding-left:  10px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 ```
 
@@ -132,12 +120,12 @@ HEX 值應該使用小寫並以最小縮寫宣告：
 ```css
 /* 正確 */
 .example {
-    color: #eee;
+  color: #eee;
 }
 
 /* 錯誤 */
 .example {
-    color: #EEEEEE;
+  color: #EEEEEE;
 }
 ```
 
@@ -148,17 +136,17 @@ HEX 值應該使用小寫並以最小縮寫宣告：
 ```css
 /* 正確 */
 input[type="button"] {
-    ...
+  ...
 }
 
 /* 錯誤 - 沒有雙引號 */
 input[type=button] {
-    ...
+  ...
 }
 
 /* 錯誤 - 使用單引號 */
 input[type='button'] {
-    ...
+  ...
 }
 ```
 
@@ -227,9 +215,9 @@ input[type='button'] {
  * The site's main page-head can have two different states:
  *
  * 1) Regular page-head with no backgrounds or extra treatments; it just
- *    contains the logo and nav.
+ *  contains the logo and nav.
  * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
- *    which has a large background image, and some supporting text.
+ *  which has a large background image, and some supporting text.
  *
  * The regular page-head is incredibly simple, but the masthead version has some
  * slightly intermingled dependency with the wrapper that lives inside it.

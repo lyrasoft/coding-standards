@@ -1,4 +1,4 @@
-# LYRASOFT CSS 編碼規範 beta
+# LYRASOFT CSS 編碼規範 beta (2017 年以前)
 
 > 這份 CSS 規範尚在 beta 中，因此有部分規則我們尚未完全導入到專案內，但足以作為討論時的參考
 

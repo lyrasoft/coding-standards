@@ -1,4 +1,4 @@
-# LYRASOFT Javascript 編碼規範
+# LYRASOFT Javascript 編碼規範 (2017 年以前)
 
 本文件依照 Joomla 編碼規範中的 Javascript 指導原則修改而來。
 

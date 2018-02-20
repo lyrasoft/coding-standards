@@ -13,3 +13,9 @@
 - [CSS 標準](css.md)
 - [SQL 建議寫法](sql.md)
 - [中文排版原則](chinese.md)
+
+## 舊編碼標準
+
+- [PHP](legacy/php.md)
+- [Javascript 標準](legacy/javascript.md)
+- [CSS 標準](legacy/css.md)
