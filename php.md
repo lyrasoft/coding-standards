@@ -1,78 +1,11 @@
 # LYRASOFT PHP 編碼規範
 
-## 關於 PSR 標準
+自 2018 年開始，LYRASOFT 開始採用 [PSR-2](https://www.php-fig.org/psr/psr-2/) 標準作為主要開發風格，未來將繼續支援 [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md)。
+主要標準規範請參考 PHP FIG 的 [PSR-1](https://www.php-fig.org/psr/psr-1/) 與 [PSR-2](https://www.php-fig.org/psr/psr-2/)
 
-在 PSR 盛行的今日，我們暫時未轉進 PSR-2 標準。由於我們的軟體工程知識有其歷史，遠從 PHP 尚未全面標準化的年代，我們就致力於與國際 Opensource 接軌，遵循我們所熟悉的生態圈的標準，並建立屬於自己的開發規範與流程。LYRASOFT 的編碼風格承襲自 PEAR 與 Joomla，經過長年的檢驗與調整，是非常優秀且易讀性高的標準。也因此 LYRASOFT 將繼續維持這個標準，並隨時根據 PHP 社群的習慣過作微幅調整。
+> 中文請參考 [Mosil 的翻譯](https://github.com/mosil/fig-standards/tree/master/accepted/zh-tw)
 
-本標準中若有未盡完善的規則，依然可以優先參考 PSR-1 與 PSR-2 取而代之，臨時需要採用他方標準時，可善用 PHPStorm 的 Code Style 功能作調整。
-
-### 原始 Joomla! 編碼標準
-
-請參照 [Joomla-Coding-Stanard-Chinese](https://github.com/asika32764/Joomla-Coding-Stanard-Chinese) （本文件少部分已過期，詳情請以[官方文件](http://joomla.github.io/coding-standards/)為主）
-
-
-## 檔案格式
-
-### 編碼
-
-請一律使用未帶 BOM 的 UTF-8 編碼格式。
-
-### 換行
-
-編輯器請設定成以 `LF` (\n) 作為換行字元。請勿使用 Mac 的回車符 `CR` (\r) 或 Windows 的 `CRLF` (\r\n) 組合。
-
-Windows 安裝 Git 時，請選擇 `Checkout Windows-style, commit Unix-style line endings` 選項。
-
-![git-crlf](http://cl.ly/T2xQ/git-crlf.png)
-
-參見： [Git 在 Windows 平台處理斷行字元 (CRLF) 的注意事項](http://blog.miniasp.com/post/2013/09/15/Git-for-Windows-Line-Ending-Conversion-Notes.aspx)
-
-
-## 基礎編輯設定
-
-### PHP 標籤
-
-永遠使用長標籤： `<?php ?>` 來包裹 PHP 程式碼，不使用短標籤 `<? ?>`。這可以確保您的程式碼可執行在大多數未經設定的主機環境。
-
-如果檔案中只包含PHP程式碼，則不應該包含結尾標籤 `?>`。這個標籤在 PHP 中不是必要的。這樣子可以避免在系統輸出前，不小心讓任何空白預先送出 header ，這會造成 Joomla 的 Session 功能錯誤 (參見 PHP 手冊的說明 [Instruction separation](http://php.net/basic-syntax.instruction-separation))。
-
-永遠保留一行空行在檔案結尾，範例：
-
-``` php
-<?php
-
-class Foo
-{
-
-}
-
-```
-
-### 縮排與對齊
-
-程式縮進請使用 Tab 而非空白字元，註解與變數指派的排版對齊應使用空白字元。
-
-範例：
-
-``` php
-/**
- * The foo function.
- *
- * @return void
- */
-function foo()
-{
-	$a    = 'a';
-	$bar  = 'bar';
-	$cool = 'cool';
-}
-```
-
-### 行寬
-
-原則上每行程式碼並沒有最大長度限制，但根據國際標準值，150字元能夠在不需要水平滾動的狀況下達到最好的可讀性。
-若遇到換行會影響輸出結果的情況(例如 PHP/HTML 混合的結構檔案)，更長的程式碼也是被允許的。
-
+另外，本文件後續將補充一些 PSR-2 中沒有規範，但我們另行規範的風格，所有未列出或出現衝突的規範皆以 PSR-2 為準。
 
 ## 程式寫作規範
 
@@ -108,147 +41,31 @@ require_once __DIR__ . '/../bar.php';
 
 ## 程式排版
 
-### 控制結構
-
-所有的控制結構必須在關鍵字與起始括號之間放置一個空白字元，而開頭、結尾括號與邏輯判斷式之間無空格。這是為了區隔控制結構與函式以方便辨認，而括號內必須要包含邏輯。
-
-控制結構關鍵字，如： `if`, `else`, `do`, `for`, `foreach`, `try`, `catch`, `switch` 與 `while` 皆採 [Allman](http://en.wikipedia.org/wiki/Indent_style#Allman_style) 風格，關鍵字本身必須在一個新行，而語言區塊（大括號）的開頭與結束也接需再一個新行中。
-
-### _if-else_ 範例
-
-```php
-if ($test)
-{
-	echo 'True';
-}
-// 註解可寫在此
-// 要注意的是 "elseif" 採用單一單字而非拆開成 "else if"
-elseif ($test === false)
-{
-	echo 'Really false';
-}
-else
-{
-	echo 'A white lie';
-}
-```
-
-如果控制結構的判斷式需要多行，則第二行開始需要一個 Tab 縮排，結尾括號需要再同一行上。
-
-```php
-if ($test1
-	&& $test2)
-{
-	echo 'True';
-}
-```
-
-### _do-while_ 範例
-
-
-```php
-do
-{
-	$i++;
-}
-while ($i < 10);
-```
-
-### _for_ 範例
-
-```php
-for ($i = 0; $i < $n; $i++)
-{
-	echo 'Increment = ' . $i;
-}
-```
-
-### _foreach_ 範例
-
-```php
-foreach ($rows as $index => $row)
-{
-	echo 'Index = ' . $id . ', Value = ' . $row;
-}
-```
-
-### _while_ 範例
-
-```php
-while (!$done)
-{
-	$done = true;
-}
-```
-
-### _switch_ 範例
-
-當使用 `switch` 時， `case` 關鍵字必須縮排一次，而 `break` 關鍵字必須獨立在新的一行，且相較於 `case` 再縮排一次。
-
-```php
-switch ($value)
-{
-	case 'a':
-		echo 'A';
-		break;
-
-	default:
-		echo 'I give up';
-		break;
-}
-```
-
-#### 關於 Allman 風格
-
-採用 Allman 風格的優點在於，我們可以隨時註解或替換控制結構，而不會造成語言錯誤。例如：
-
-``` php
-// if ($egg)
-{
-	echo 'coffee';
-}
-```
-
-``` php
-foreach ($array as $i => $value)
-// for ($i = 0; $i <= count($array); $i++)
-{
-	// Do something...
-}
-```
-
-以上寫法皆可以正常運作。
-
-除此之外，我們不必為了程式碼可讀性刻意在控制結構前後增加空行：
-
-``` php
-if ($yoo)
-{
-	echo '123';
-}
-else
-{
-	echo '321';
-}
-```
-
-比起：
-
-``` php
-if ($yoo) {
-	echo '123';
-} else {
-	echo '321';
-}
-```
-
-有較佳可讀性，雖然可能造成程式碼文件較長。
-
 ### 換行
 
-#### 類別、方法與控制結構
+#### 控制結構
 
-在 Allman 風格之下，控制結構與類別方法的大括號前後都不需刻意增加空行，只有方法與方法之間空一行以區隔。
+所有控制結構 `if`, `for`, `foreach` 等等，皆須在前後增加一行空行。
+
+```php
+$foo = 'bar';
+
+if ($foo) {
+    //
+}
+
+$baz = 123;
+```
+
+#### `return` 前空行
+
+所有的 `return` 關鍵字上方必要空一行。
+
+```php
+$result = $db->loadObject();
+
+return $result;
+```
 
 #### 程式邏輯運作過程
 
@@ -259,18 +76,17 @@ if ($yoo) {
 範例：
 
 ``` php
-if ($avoid)
-{
-	$filter = $this->getState('filter', array());
-	$search = $this->getState('search');
-	$data   = $this->getState('data', array());
-	$table  = $this->getTable();
+if ($avoid) {
+    $filter = $this->getState('filter', array());
+    $search = $this->getState('search');
+    $data   = $this->getState('data', array());
+    $table  = $this->getTable();
 
-	$table->bind($data);
+    $table->bind($data);
 
-	$table->check();
+    $table->check();
 
-	$table->store();
+    $table->store();
 }
 ```
 
@@ -284,11 +100,9 @@ if ($avoid)
 $ref1 = &$this->sql;
 ```
 
-> **注意**
->
-> 在 PHP 5 ，物件不需要參照符號，所有物件皆是參照。
+## 空白間距
 
-## 字串連接的間距
+### 字串連接
 
 當使用字串連接時， `.` 符號的左右兩旁應該要有一格空白。例如：
 
@@ -305,82 +119,12 @@ echo 'index.php?option=com_foo&task=foo.edit&id=' . (int) $id
     . '&layout=special';
 ```
 
-## 類別與其成員宣告
+### 型別轉換
 
-### 類別
-
-類別採用駝峰式 (CamelCase) 命名法，開頭大寫，例如： `ContentModelArticle` 或 `FGHElper`
-
-前後括號各自為一個新行，括號與內容之間不應該有空行。除了 Alias 以外每個檔案應該只有一個類別，`extends` 與 `implement` 應該與類別名稱在同一行。
-
-抽象物件應加上 `abstract` 在 `class` 之前。
-
-### 函式與方法
-
-採用 "studly caps" 風格 (也稱作 "bumpy case" 或 "camel caps")，起始字母小寫，每個單字開頭大寫，範例： `getItems()`。
-
-前後括號各自為一個新行，方法與方法之間（包含其註解區塊）應該只有一行空行。
-
-方法宣告應搭配權限關鍵字，非公開介面應該盡量以 `protected` 為主，讓子代類別可以取用父代方法，公開介面則應該搭配 `public`。靜態調用的方法還須再加上 `static` 關鍵字。
-
-如果一個函數定義橫跨數行，第二行起的每一行皆需以一個 tab 作縮排，結束括號需與最後一個參數存在於同一行。
+使用 `()` 語法進行型別轉換時一定要在後方加上一個空白
 
 ```php
-function fooBar($param1, $param2,
-	$param3, $param4)
-{
-	// Body of method.
-}
-```
-
-### 類別屬性
-
-Joomla! CMS 中，類別屬性以底線分隔單字，如： `$this->default_view`，以跟方法坐區隔。但在 Framework 中，屬性也改以"studly caps" 風格。因此僅規範專案統一即可。
-
-屬性宣告應搭配權限關鍵字，如 `public`、`protected`、`private`。若非特別必要，預宣告屬性應該以 `protected` 為主，讓子代類別可以存取父代屬性，而外部則依靠 getter 與 setter 來存取。
-
-若屬性沒有初始值，則一定為 `null`，沒有特殊目的則不需強制指派初始值。
-
-### 常數
-
-常數應永遠為大寫，並用底線分隔單字，根據專案加上前綴字。例： `BAMAHOME_ADMIN`。
-
-### 宣告範例
-
-``` php
-<?php
-
-class ContentModelArticle extends JModelLegacy
-{
-	public $foo;
-
-	public function getFoo()
-	{
-		return $this->foo;
-	}
-}
-```
-
-## 一般變數宣告及使用
-
-### 變數命名原則
-
-在 LYRASOFT 的專案中，變數優先採用 "studly caps" 風格 (也稱作 "bumpy case" 或 "camel caps")。名稱起始的字母必須是小寫，而每個新單字的首個字母為大寫。
-
-### 賦值
-
-一般變數建議集中於方法開頭進行宣告或賦值，可依據變數長度適度排版，等號距離最長變數應該只有一個空格：
-
-``` php
-public function getItems($pk = null)
-{
-	$pk    = (int) $pk ?: $this->input->getInt('id');
-	$db    = JFactory::getDbo();
-	$app   = JFactory::getApplication();
-	$query = $db->getQuery(true);
-
-	// 函式主體
-}
+$sql = (string) $query;
 ```
 
 ### 設定值或運算常數
@@ -390,12 +134,12 @@ public function getItems($pk = null)
 ``` php
 foreach ($array as $k => $value)
 {
-	if ($k == 3)
-	{
-		break;
-	}
+    if ($k == 3)
+    {
+        break;
+    }
 
-	// Do some stuff....
+    // Do some stuff....
 }
 ```
 
@@ -406,12 +150,12 @@ $limit = 3;
 
 foreach ($array as $k => $value)
 {
-	if ($k == $limit)
-	{
-		break;
-	}
+    if ($k == $limit)
+    {
+        break;
+    }
 
-	// Do some stuff....
+    // Do some stuff....
 }
 ```
 
@@ -420,100 +164,30 @@ foreach ($array as $k => $value)
 ``` php
 class ImageThumb
 {
-	protected $width;
+    protected $width;
 
-	protected $height;
+    protected $height;
 
-	public function __construct(JRegistry $config)
-	{
-		$this->width  = $config->get('thumb.width', 640);
-		$this->height = $config->get('thumb.height', 480);
-	}
+    public function __construct(JRegistry $config)
+    {
+        $this->width  = $config->get('thumb.width', 640);
+        $this->height = $config->get('thumb.height', 480);
+    }
 }
 ```
 
-## 陣列
+## 判斷語法
 
-陣列元素的指派可稍微排版，當多行時，可用 Tab 縮排。每行跟隨一個都逗號結尾，最後一行可包含逗號，這是 PHP 允許的寫法，對於程式碼 diff 比對時也有所幫助。
+### 強行別判斷
 
-範例:
-陣列
-```php
-$options = array(
-	'foo'  => 'foo',
-	'spam' => 'spam',
-);
-```
+只要能確保型別不是變動的，我們皆以三等號 (`===` or `!==`) 來判斷，對效能有幫助，除非幫下判斷變數可能存在
+型別的變動(例如 `'1'` 與 `1`)，才使用 `==` 或 `!=`。
 
-若確保環境為 PHP 5.4 ，可使用短宣告語法：
+可以用 `$var === null` 取代 `is_null()`，效能較好。
 
-``` php
-$array = ['a', 'b', ['c', 'd']];
-```
+確定是陣列時，可以用 `$var === []` 取代 `!count($var)` 或 `empty($var)` 來判斷空陣列 ，效能也較好。
 
-## 函式與方法呼叫
-
-### 一般函式與方法調用
-
-呼叫函式時, 函式名稱跟參數括號中不能有空白, 而第一個帶入參數也不得有空白; 每個參數逗點後一個空白隔開 (如果有的話), 最後一個參數跟括號沒有空格. 參數帶值等號前後需有空白. 可以多行對齊.
-
-``` php
-// 單函式呼叫
-$item = $foo->getItem($pk);
-
-// 多函式呼叫
-$short  = bar('short');
-$medium = bar('medium');
-$long   = bar('long');
-```
-
-### 鏈狀調用
-
-若物件支援鏈狀調用，除了第一次調用以外，需要換行並縮排一次，無需對齊物件變數，且結尾直接跟著分號：
-
-``` php
-$query->select('u.*')
-	->from($db->qn('#__users') . ' AS u'))
-	->where($db->qn('id') . ' = ' . $db->q($pk));
-```
-
-調用後行寬較短時可考慮不換行：
-
-``` php
-$db->setQuery($query)->loadResult();
-```
-
-## 判斷式
-
-### 運算子
-
-使用 `&&` 與 `||` 運算子而非 `and` 與 `or` 運算子。
-
-### 大小於判斷
-
-根據語意化決定使用 `> 0` 還是 `>= 1` ，以易懂為主。
-
-### 三元運算
-
-運算子前後應空格，分號前不空格。若過長的三元運算子，可考慮換行處理，但運算子必須在開頭，換行後縮進一次。
-
-範例：
-
-``` php
-echo $alias ? 'Alias' : 'Title';
-```
-
-``` php
-echo ($config->get('item.alias') == $alias)
-	? $this->item->get('alias')
-	: $this->item->get('title', $default);
-```
-
-確保為 PHP 5.3 的環境可用簡寫：
-
-``` php
-$foo = $bar ?: $yoo;
-```
+其餘未列出的使用情境皆可用此規則來判斷。
 
 ### 存在判斷
 
@@ -521,7 +195,7 @@ $foo = $bar ?: $yoo;
 
 #### isset()
 
-用在判斷變數或陣列是否宣告過，且值不為 null：
+用在判斷變數或陣列是否宣告過，且值不為 `null`：
 
 ``` php
 if (isset($array['eggs']) && $array['eggs'] == 5)
@@ -541,20 +215,7 @@ if (!empty($array['online']))
 
 注意 `isset()` 在變數為 `null` 時會回傳否，因此判斷物件屬性是否被宣告過，應該用 `property_exists()`。
 
-#### 直接判斷
-
-若我們能夠確保變數或物件元素一定存在，請大膽直接將他放在判斷式中，此為慣例寫法，表達性佳不會有混淆問題：
-
-``` php
-if ($yoo)
-{
-	echo 'GO';
-}
-elseif (!$hoo)
-{
-	echo 'Back';
-}
-```
+#### 簡單易懂
 
 避免多重否定寫法混淆使用者：
 
@@ -628,6 +289,7 @@ if (!$allowNull && !(($value !== null) && ($value !== '')))
 
 每個函式(function)或方法(method)必須要註解使用到的例外，用 @throws 的標籤和丟出例外的物件名稱作註解。每種例外只須備被註解一次。註解的說明非必須。
 
+> 對於每一種例外的使用方式，請參考此文章: [PHP Exceptions 種類與使用情境說明](http://asika.windspeaker.co/post/3503-php-exceptions)
 
 ## 註解
 
@@ -670,7 +332,7 @@ C 風格的註解通常被用在文件開頭、類別、函式等等的文件標
  */
 class Windwalker
 {
-	// ...
+    // ...
 }
 ```
 
@@ -708,7 +370,7 @@ class Windwalker
  */
 public function bloom($path)
 {
-	// Body of method.
+    // Body of method.
 }
 ```
 
@@ -726,14 +388,14 @@ public function bloom($path)
 ``` php
 class Foo
 {
-	/**
-	 * Description of Bar.
-	 *
-	 * @var    string
-	 *
-	 * @since  1.0
-	 */
-	public protected $bar;
+    /**
+     * Description of Bar.
+     *
+     * @var    string
+     *
+     * @since  1.0
+     */
+    public protected $bar;
 }
 ```
 
@@ -744,11 +406,11 @@ class Foo
 ``` php
 class Foo
 {
-	/**
-	 * Description of Constant.
-	 *
-	 * @const  string
-	 */
-	const SAKURA = 'sakura';
+    /**
+     * Description of Constant.
+     *
+     * @const  string
+     */
+    const SAKURA = 'sakura';
 }
 ```
