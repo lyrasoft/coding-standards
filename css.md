@@ -1,10 +1,11 @@
-# LYRASOFT CSS 編碼規範
+# LYRASOFT CSS/SCSS 編碼規範
 
 自 2018 起，LYRASOFT 轉用 SCSS 取代 LESS。相關編碼風格也遵循 [AirBnb CSS/Sass Styleguide](https://github.com/airbnb/css)
 
 > 中文 https://github.com/ArvinH/css-style-guide
 
-以下則針對 Airbnb 規範補充更多額外建議。
+以下則針對 Airbnb 規範補充更多額外建議。由於 AirBnb CSS/Sass Styleguide 後半部大多為建議形式，並非強制規範，我們的補充內容，
+有部分會與其衝突。
 
 ## 語法與格式
 
@@ -125,6 +126,107 @@ OOCSS 風格
 
 目前我們在編寫時，建議以 OOCSS 為主，有較多的重複使用與組合彈性。
 
+## SCSS 風格
+
+基本 SCSS 規範遵循 Airbnb 建議，不過我們可以允許三層以上的嵌套。由於我們以開發網站為主，並非開發重用的含式庫，多數大型專案的 HTML 將極其複雜且深入，三層嵌套在 OOCSS 風格下不足以使用，容易讓網站元素之間相互影響。
+
+以下為 Bootstrap 4 的範例程式碼，某些複雜的多層次元件(例如下拉選單)需要用到多層的子代選擇器(` > `)來確保提取到正確的元素。
+
+```scss
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+
+    &#{$infix} {
+      // ...
+
+      @include media-breakpoint-up($next) {
+        .navbar-nav {
+          flex-direction: row;
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; // Reset the default from `.dropdown-menu`
+          }
+        }
+
+        // For nesting containers, have to redeclare for alignment purposes
+        > .container,
+        > .container-fluid {
+          flex-wrap: nowrap;
+        }
+
+        // ...
+      }
+    }
+  }
+}
+```
+
+但多數一般元件都可控制在 5 層以內，盡可能優化你的層次與結構讓代碼易讀。可以考慮以下規則 :
+
+第一層為元件入口選擇器，我們把一整個需要獨立風格的區塊稱為元件 (component)，所有它的樣式都要被包在裡面:
+
+```scss
+header.main-header {
+  // ...
+}
+
+section.feature {
+  // ...
+}
+```
+
+元件入口內的 class 與元素選擇器最高三層
+
+```scss
+header.main-header {
+  ul.dropdown-menu {
+    > li {
+      > a {
+        // ...
+      }
+    }
+  }
+}
+```
+
+後續的選擇器僅使用偽類選擇器 (`::`) 或 `&`選擇器來更改不同狀態下的樣式。
+
+```scss
+header.main-header {
+  ul.dropdown-menu {
+    > li {
+      > a {
+        &::before {
+          // ...
+        }
+
+        &:hover {
+          // ...
+        }
+
+        &.active {
+          // ...
+        }
+      }
+    }
+  }
+}
+```
+
+但若既有的 class 有根據層次變動，則可有效的降低必要層次，這是 Bootstrap 4 以後所提供的較佳結構。
+
+```scss
+header.main-header {
+  .navbar-nav a.nav-link {
+    // 主選單的項目
+  }
+
+  a.dropdown-item {
+    // 子選單的項目
+  }
+}
+```
 
 ## 註解
 
