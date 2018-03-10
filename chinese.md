@@ -55,7 +55,7 @@
 
 當網站套用模板時，或者設計師獨立設計網站版面時，可能對標題大小有自己的想法，因此本文件不規範全域的標題大小。但另外在文章字體中有所建議。
 
-> Bootstrap 中文標題大小是用 px 寫死的，建議設計師還是要自己把 h1 ~ h6 的大小重設一遍
+> Bootstrap 3 中文標題大小是用 px 寫死的，建議設計師還是要自己把 h1 ~ h6 的大小重設一遍
 
 ### 2.3. 選單、Label、Badge 等字體大小
 
@@ -72,6 +72,8 @@
 在 Mac 中，目前最常用的中文字體為**蘋方TC**，再來是**黑體TC**，要注意的是 Mac 上的 CSS 通常必須要把字體名稱寫成英文，所以會是 `PingFang TC` 與 `Heiti TC`。 (你想支援更古老的 Mac 別忘了 **LiHei Pro**)
 
 Windows 上不意外的萬年**微軟正黑體**，你不用特別設定新細明體，因為當所有字體都抓不到時，最後就是回到新細明體來顯示。 (Windows 上字型必須用中文名稱)
+
+當然別忘記預設的 `sans-serif` 在最後面。
 
 故以下是我們常用的字體順序:
 
@@ -91,7 +93,7 @@ font-family: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', 'Microsoft Jh
 
 標題字體在 Mac 上可以加上例如**蘭亭黑體** `LantingHei TC` 之類的額外選擇。由於中文的標題與內文區隔較不明顯，建議在中文網頁上，通常要選比較粗的字體。若字型一樣，則嘗試加粗。
 
-在 Windows 上沒有太多選擇，依然是微軟正黑體然後加粗。不過可以考慮採用一個蠻好看的字體: **Adobe繁黑體**，在 Windows 上顯示的平滑效果不輸給 Mac，缺點是有安裝 Adobe 全套的使用者才看的到。
+在 Windows 上沒有太多選擇，依然是微軟正黑體然後加粗。不過可以考慮採用一個蠻好看的字體: **Adobe繁黑體**，在 Windows 上顯示的平滑效果不輸給 Mac，缺點是有安裝 Adobe 全套的使用者才看的到。**(注意 Adobe 繁黑體 在 IE 顯示上 Baseline 會跑掉)**
 
 ### 3.3. 按鈕與 UI 元素
 
@@ -102,15 +104,15 @@ font-family: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', 'Microsoft Jh
 若全站字體變動不大，建議在 LESS 或 SCSS 的開頭就寫好相關變數，之後網站內只要套用變數即可。
 
 ```less
-@main-font: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
-@title-font: '{標題的英文字型}', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+$main-font: '{主要的英文字型}', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+$title-font: '{標題的英文字型}', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
 ```
 
 使用方式
 
 ```less
 .article-content .btn {
-    font-family: @main-font;
+    font-family: $main-font;
 }
 ```
 
@@ -148,7 +150,9 @@ Bootstrap 預設行距較適合英文，對中文來說太窄。中文文字行�
 
 ### 5.2. 標題行距
 
-主副標與內文之間，各自之間應該要有不同的間距，建立層次感。
+採用 Bootstrap 時，其沒有替 h1~h6 設定基本的行距，若碰到兩行標題時會黏在一起。可考慮預設為 1.3-1.5 之間的行距。 
+
+另外，主副標與內文之間，各自之間應該要有不同的間距，建立層次感。
 
 下圖是沒有層次感的範例，間距都一樣
 
@@ -287,18 +291,19 @@ h6 {
 以下的 LESS / SCSS 程式碼可以直接 Copy 到專案中使用 (將不定期更新)
 
 ```less
-@main-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
-@title-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+$main-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+$title-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
 
 html, body {
   font-size: 16px;
-  font-family: @main-font;
+  font-family: $main-font;
   line-height: 1.75;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
-  font-family: @title-font;
+  font-family: $title-font;
+  line-height: 1.5;
 }
 
 .article-content {
@@ -367,7 +372,9 @@ h1, h2, h3, h4, h5, h6 {
 - [LYRASOFT](https://lyrasoft.net/)
 - [飛鳥學院](http://asukademy.com/)
 - [夏木樂網站知識](https://simular.co/knowledge/)
+- [AddMaker](https://addmaker.tw/)
 - [AnimApp 動畫社群](http://animapp.tw/)
 - [台灣美語通](https://www.english4tw.com/)
 - [Datavideo Virtualset](http://www.datavideovirtualset.com/tw)
 - [iHealth](http://www.ihealth.com.tw/)
+- [彭坊](https://www.profond.com.tw/)
