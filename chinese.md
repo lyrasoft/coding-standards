@@ -377,4 +377,4 @@ h1, h2, h3, h4, h5, h6 {
 - [台灣美語通](https://www.english4tw.com/)
 - [Datavideo Virtualset](http://www.datavideovirtualset.com/tw)
 - [iHealth](http://www.ihealth.com.tw/)
-- [彭坊](https://www.profond.com.tw/)
+- [澎坊](https://www.profond.com.tw/)
