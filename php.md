@@ -4,7 +4,7 @@ LYRASOFT 採用 [PSR-12](https://www.php-fig.org/psr/psr-12/) 標準作為主要
 
 > 中文請參考 [PSR-12 中文翻譯](https://github.com/memochou1993/PSR/blob/master/PSR-12.md)
 
-另外，本文件後續將補充一些 PSR-2 中沒有規範，但我們另行規範的風格，所有未列出或出現衝突的規範皆以 PSR-2 為準。
+另外，本文件後續將補充一些 PSR-12 中沒有規範，但我們另行規範的風格，所有未列出或出現衝突的規範皆以 PSR-12 為準。
 
 ## 程式寫作規範
 
