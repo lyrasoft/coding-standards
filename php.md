@@ -1,9 +1,8 @@
 # LYRASOFT PHP 編碼規範
 
-自 2018 年開始，LYRASOFT 開始採用 [PSR-2](https://www.php-fig.org/psr/psr-2/) 標準作為主要開發風格，未來將繼續支援 [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md)。
-主要標準規範請參考 PHP FIG 的 [PSR-1](https://www.php-fig.org/psr/psr-1/) 與 [PSR-2](https://www.php-fig.org/psr/psr-2/)
+LYRASOFT 採用 [PSR-12](https://www.php-fig.org/psr/psr-12/) 標準作為主要開發風格。
 
-> 中文請參考 [Mosil 的翻譯](https://github.com/mosil/fig-standards/tree/master/accepted/zh-tw)
+> 中文請參考 [PSR-12 中文翻譯](https://github.com/memochou1993/PSR/blob/master/PSR-12.md)
 
 另外，本文件後續將補充一些 PSR-2 中沒有規範，但我們另行規範的風格，所有未列出或出現衝突的規範皆以 PSR-2 為準。
 
